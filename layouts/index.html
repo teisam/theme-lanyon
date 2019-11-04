@@ -1,7 +1,6 @@
 {{ partial "default_head.html" . }}
 
-<!-- Space delimited list of page types -->
-{{ $paginator := .Paginate (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
+{{ $paginator := .Paginate (where .Data.Pages.ByDate.Reverse "Type" "post") }}
 
 <div class="posts">
   {{ range .Paginator.Pages }}
@@ -28,3 +27,4 @@
 </div>
 
 {{ partial "default_foot.html" . }}
+
