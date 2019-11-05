@@ -7,9 +7,9 @@
 
   <title>
     {{ if .IsHome }}
-      {{ .Site.Params.Title }} &middot; {{ .Site.Params.Tagline }}
+      {{ .Site.Title }}
     {{ else }}
-      {{ .Title }} &middot; {{ .Site.Params.Title }}
+      {{ .Title }} · {{ .Site.Title }}
     {{ end }}
   </title>
 
@@ -25,4 +25,22 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+	<link rel="me" href="https://micro.blog/{{ .Site.Author.username }}" />
+	{{ with .Site.Params.twitter_username }}
+		<link rel="me" href="https://twitter.com/{{ . }}" />
+	{{ end }}
+	{{ with .Site.Params.github_username }}
+		<link rel="me" href="https://github.com/{{ . }}" />
+	{{ end }}
+	{{ with .Site.Params.instagram_username }}
+		<link rel="me" href="https://instagram.com/{{ . }}" />
+	{{ end }}
+	<link rel="authorization_endpoint" href="https://micro.blog/indieauth/auth" />
+	<link rel="token_endpoint" href="https://micro.blog/indieauth/token" />
+	<link rel="micropub" href="https://micro.blog/micropub" />
+	<link rel="microsub" href="https://micro.blog/microsub" />
+	<link rel="webmention" href="https://micro.blog/webmention" />
+	<link rel="subscribe" href="https://micro.blog/users/follow" />
 </head>
+

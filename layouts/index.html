@@ -5,8 +5,13 @@
 <div class="posts">
   {{ range .Paginator.Pages }}
     <div class="post">
+{{ if .Title }}
         <h1 class="post-title"><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
-        <span class="post-date">{{ .Site.Params.DateForm | default "Jan 2, 2006" | .Date.Format }}</span>
+        <span class="post-date">{{ .Site.Params.DateForm | default "Jan 2, 2006" | .Date.Format }}
+{{ else }}
+        <a href="{{ .Permalink }}"><span class="post-date">{{ .Site.Params.DateForm | default "Jan 2, 2006" | .Date.Format }}</a>
+{{ end }}
+</span>
         {{ .Content }}
     </div>
   {{ end }}
