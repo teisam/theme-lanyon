@@ -1,9 +1,13 @@
 {{ partial "default_head.html" . }}
 
-<div class="post">
-  <h1 class="post-title">{{ .Title }}</h1>
+<div class="post h-entry">
+  <h1 class="post-title p-name">{{ .Title }}</h1>
   <span class="post-date">{{ .Site.Params.DateForm | default "Jan 2, 2006" | .Date.Format }}</span>
-  {{ .Content }}
+  <span class="e-content">{{ .Content }}</span>
 </div>
+
+{{ if .Site.Params.include_conversation }}
+<script type="text/javascript" src="https://micro.blog/conversation.js?url={{ .Permalink }}"></script>
+{{ end }}
 
 {{ partial "default_foot.html" . }}

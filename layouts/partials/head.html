@@ -24,8 +24,12 @@
   <link rel="apple-touch-icon" sizes="200x200" href="https://micro.blog/{{ .Site.Author.username }}/avatar.jpg">
   <link rel="shortcut icon" href="https://micro.blog/{{ .Site.Author.username }}/favicon.png" type="image/x-icon" />
 
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+    {{ if .RSSLink -}}
+      <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+      <link href="{{ "podcast.xml" | absURL }}" rel="alternate" type="application/rss+xml" title="Podcast" />
+      <link rel="alternate" type="application/json" title="{{ .Site.Title }}" href="{{ "feed.json" | absURL }}" />
+      <link rel="EditURI" type="application/rsd+xml" href="{{ "rsd.xml" | absURL }}" />
+    {{ end -}}
 
 	<link rel="me" href="https://micro.blog/{{ .Site.Author.username }}" />
 	{{ with .Site.Params.twitter_username }}
